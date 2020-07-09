@@ -1,5 +1,6 @@
 import React from 'react';
 import { atom, useRecoilState } from 'recoil';
+import TextField from '@material-ui/core/TextField';
 
 const textState = atom({
   key: 'textState', // unique ID (with respect to other atoms/selectors)
@@ -15,7 +16,7 @@ function TextInput() {
 
   return (
     <div>
-      <input type="text" value={text} onChange={onChange} />
+      <TextField type="text" value={text} onChange={onChange} label="text" />
       <br />
       Echo: {text}
     </div>
