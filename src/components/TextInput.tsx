@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import TextField from '@material-ui/core/TextField';
+import { TextField, Typography } from '@material-ui/core';
 import { textState } from '../states';
 
 function TextInput() {
@@ -14,7 +14,7 @@ function TextInput() {
     <div>
       <TextField type="text" value={text} onChange={onChange} label="text" />
       <br />
-      Echo: {text}
+      <Typography>Echo: {text}</Typography>
     </div>
   );
 }
