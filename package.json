@@ -19,7 +19,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint",
-    "check": "npm run lint && CI=true npm run test"
+    "check": "npm run lint && CI=true npm run test",
+    "coverage": "npm test -- --coverage --watchAll=false"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,7 +51,8 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.5",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "ts-jest": "^26.1.1"
   },
   "lint-staged": {
     "**/*": [
@@ -61,6 +63,33 @@
     "hooks": {
       "pre-commit": "lint-staged",
       "pre-push": "npm run check"
+    }
+  },
+  "jest": {
+    "clearMocks": true,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!**/node_modules/**",
+      "!src/*.{js,ts,tsx}",
+      "src/App.tsx",
+      "!**/vendor/**"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "json-summary",
+      "text"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/ts-jest"
     }
   }
 }
