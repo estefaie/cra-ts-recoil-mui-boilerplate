@@ -1,9 +1,13 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/Character Count/i);
-  expect(linkElement).toBeInTheDocument();
+describe('my-cra-app', () => {
+  it('renders learn react link', () => {
+    const { getByTestId } = render(<App />);
+    const input = getByTestId('text-box');
+    fireEvent.change(input, { target: { value: 'Hello!' } });
+    const characterCount = getByTestId('character-count');
+    expect(characterCount.innerHTML).toEqual('Character Count: 6');
+  });
 });

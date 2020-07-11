@@ -3,10 +3,13 @@ import { useRecoilValue } from 'recoil';
 import Typography from '@material-ui/core/Typography';
 import { charCountState } from '../states';
 
-function CharacterCount() {
+const CharacterCount = () => {
   const count = useRecoilValue(charCountState);
-
-  return <Typography>Character Count: {count}</Typography>;
-}
+  return (
+    <Typography data-testid="character-count">
+      Character Count: {count}
+    </Typography>
+  );
+};
 
 export default CharacterCount;

@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import { TextField, Typography } from '@material-ui/core';
 import { textState } from '../states';
 
-function TextInput() {
+const TextInput = () => {
   const [text, setText] = useRecoilState(textState);
 
   const onChange = (event: any) => {
@@ -12,11 +12,17 @@ function TextInput() {
 
   return (
     <div>
-      <TextField type="text" value={text} onChange={onChange} label="text" />
+      <TextField
+        type="text"
+        value={text}
+        onChange={onChange}
+        label="text"
+        inputProps={{ 'data-testid': 'text-box' }}
+      />
       <br />
       <Typography>Echo: {text}</Typography>
     </div>
   );
-}
+};
 
 export default TextInput;
