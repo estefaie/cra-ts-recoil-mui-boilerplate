@@ -1,11 +1,7 @@
 import React from 'react';
-import { atom, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import TextField from '@material-ui/core/TextField';
-
-const textState = atom({
-  key: 'textState', // unique ID (with respect to other atoms/selectors)
-  default: '', // default value (aka initial value)
-});
+import { textState } from '../states';
 
 function TextInput() {
   const [text, setText] = useRecoilState(textState);
